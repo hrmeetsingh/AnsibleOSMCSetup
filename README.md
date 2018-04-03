@@ -1,5 +1,4 @@
 # AnsibleOSMCSetup
-===
 To setup simple video streaming addons after installing OSMC/Kodi first time.
 
 ## Pre-requisites
