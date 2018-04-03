@@ -1,0 +1,34 @@
+---
+- hosts: RaspberryPi
+  tasks:
+   - name: Create destination directory
+     file: 
+       path: /home/osmc/addons/ 
+       state: directory
+       owner: osmc
+       group: osmc
+       mode: 0775
+
+   - name: Copy Youtube addon To Kodi
+     copy:
+       src: AddOns/plugin.video.youtube-5.5.1.zip
+       dest: /home/osmc/addons/plugin.video.youtube-5.5.1.zip
+       owner: osmc
+       group: osmc
+       mode: 0775
+       
+   - name: Copy DailyMotion addon To Kodi
+     copy:
+       src: AddOns/plugin.video.dailymotion-0.2.5.zip
+       dest: /home/osmc/addons/plugin.video.dailymotion-0.2.5.zip
+       owner: osmc
+       group: osmc
+       mode: 0775
+
+   - name: Copy Kodil repository To Kodi
+     copy:
+       src: AddOns/repository.kodil-1.0.1.zip
+       dest: /home/osmc/addons/repository.kodil-1.0.1.zip
+       owner: osmc
+       group: osmc
+       mode: 0775
