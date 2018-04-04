@@ -1,5 +1,7 @@
 # AnsibleOSMCSetup
-To setup simple video streaming addons after installing OSMC/Kodi first time.
+To setup simple video streaming addons after installing OSMC/Kodi first time. 
+
+__Note__ This setup is tested with OSMC v17.6 installation on a Raspberry Pi 3 for now.
 
 ## Pre-requisites
 - OSMC successfully installed and basic configuration done (SSH enabled)
