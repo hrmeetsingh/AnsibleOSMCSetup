@@ -1,6 +1,21 @@
 ---
 - hosts: RaspberryPi
   tasks:
+   - name: Install regdb settings
+     apt:
+       name: wireless-regdb
+       state: present
+
+   - name: Install iw
+     apt:
+       name: iw
+       state: present
+
+   - name: Install crda
+     apt:
+       name: crda
+       state: present
+
    - name: Create destination directory
      file: 
        path: /home/osmc/addons/ 
