@@ -5,7 +5,17 @@
 
   tasks:
 
-   - name: Install regdb settings
+   - name: Check if modprobe file exists
+     stat:
+      path: /etc/modprobe.d/cfg80211.conf
+     register: stat_result
+
+   - name: Set modprob file file
+     become: yes
+     shell: echo "options cfg80211 ieee80211_regdom={{ region }}"  >  /etc/modprobe.d/cfg80211.conf
+     when: stat_result.stat.exists == False
+
+   - name: Install Regulatory DB for wifi settings
      apt:
        name: wireless-regdb
        state: present
@@ -15,19 +25,19 @@
        name: iw
        state: present
 
-   - name: Install crda
+   - name: Install CRDA  (Central Regulatory Domain Agent)
      apt:
        name: crda
        state: present
 
-   - name: Get region status on device
+   - name: Get region/country status on device
      command: /sbin/iw reg get
      register: result
 
-   - name: Set region if not done
+   - name: Set region/country if not done
      become: yes
      command: /sbin/iw reg set {{ region }}
-     when: '"country 0" in result.stdout'
+     when: '"country 00" in result.stdout'
 
    - name: Create destination directory
      file: 
