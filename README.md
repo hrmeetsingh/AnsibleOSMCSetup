@@ -13,6 +13,7 @@ __Note__ This setup is tested with OSMC v17.6 installation on a Raspberry Pi 3 f
 ## Steps
 - Clone the repository `git clone https://github.com/hrmeetsingh/AnsibleOSMCSetup.git`
 - Edit the hosts file to make changes for the IP of OSMC server (My case, it is installed on an Raspberry Pi 3, so the name of host)
+- Edit vars.yml file to set your region (some RaspberryPi setups require this to support all 802.11 b/g/n wifi channels read [this](https://singhbydivineright.wordpress.com/2018/03/12/kodi-osmc-does-not-connect-to-wifi-channel-12-13-fix-it-this-way/) blog for reference )
 - Run the command `ansible-playbook -i hosts playbook.yml`
 
 ## What does it do?

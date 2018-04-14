@@ -1,6 +1,10 @@
 ---
 - hosts: RaspberryPi
+  vars_files:
+   - vars.yml
+
   tasks:
+
    - name: Install regdb settings
      apt:
        name: wireless-regdb
@@ -15,6 +19,15 @@
      apt:
        name: crda
        state: present
+
+   - name: Get region status on device
+     command: /sbin/iw reg get
+     register: result
+
+   - name: Set region if not done
+     become: yes
+     command: /sbin/iw reg set {{ region }}
+     when: '"country 0" in result.stdout'
 
    - name: Create destination directory
      file: 
